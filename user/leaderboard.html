@@ -3,13 +3,13 @@ import { collection, query, orderBy, limit, getDocs } from
 "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const q = query(
-  collection(db, "users"),
-  orderBy("points", "desc"),
+  collection(db,"users"),
+  orderBy("points","desc"),
   limit(20)
 );
 
 const snap = await getDocs(q);
-snap.forEach((doc, i) => {
-  document.body.innerHTML += `<p>${i+1}. ${doc.data().username} - ${doc.data().points}</p>`;
+snap.forEach((d,i)=>{
+  document.body.innerHTML += `<p>${i+1}. ${d.data().username} — ${d.data().points}</p>`;
 });
 </script>
