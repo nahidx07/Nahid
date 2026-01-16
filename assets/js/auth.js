@@ -2,10 +2,9 @@
 import { doc, getDoc, setDoc } from
 "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-async function createUser() {
+(async () => {
   const ref = doc(db, "users", telegramUser.userId);
   const snap = await getDoc(ref);
-
   if (!snap.exists()) {
     await setDoc(ref, {
       userId: telegramUser.userId,
@@ -17,7 +16,5 @@ async function createUser() {
       createdAt: Date.now()
     });
   }
-}
-
-createUser();
+})();
 </script>
